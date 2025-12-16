@@ -127,14 +127,14 @@
       align-items: center;
       text-align: center;
       z-index: 10;
-      margin-top: -50px;
+      margin-top: -80px;
     }
 
     /* Logo - smaller */
     .logo {
       height: 100px;
       width: auto;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       opacity: 0;
       animation: fade-in 1s ease-out 2.5s forwards;
     }
@@ -206,8 +206,8 @@
   box-shadow: 0 0 10px var(--orange), 0 0 20px var(--orange), 0 0 40px var(--orange);
   opacity: 0;
   pointer-events: none;
-  z-index: 100;
-  animation: scan 20s linear infinite, flicker 0.15s steps(2) infinite;
+  z-index: 5;
+  animation: scan 20s linear infinite, flicker 0.3s ease-in-out infinite;
   }
 
 @keyframes scan {
@@ -219,14 +219,9 @@
   }
 
 @keyframes flicker {
-  0% { opacity: inherit; }
-  50% { opacity: calc(inherit * 0.6); }
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(0.85); }
   }
-
-    @keyframes scan {
-      0% { top: -4px; }
-      100% { top: 100%; }
-    }
 
     /* Corner HUD elements */
     .hud-corner {
