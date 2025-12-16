@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Substratic — Coming June 2026</title>
+  <meta name="description" content="Substratic - A media and marketing group. Launching June 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --orange: #FC7A1E;
+      --gold: #EDAB35;
+      --blue: #68A9B9;
+      --white: #F2F2F2;
+      --bg: #211E1C;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Space Mono', monospace;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Signal data columns - scrolling background */
+    .signal-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .signal-column {
+      position: absolute;
+      top: 0;
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: 2px;
+      color: var(--blue);
+      animation: scroll-up 30s linear infinite;
+      white-space: pre;
+    }
+
+    @keyframes scroll-up {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-300vh); }
+    }
+
+    /* Circle container */
+    .circle-container {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    /* WOW circle */
+    .wow-circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0;
+      animation: circle-appear 1s ease-out 0.5s forwards;
+    }
+
+    .wow-circle svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .wow-circle-path {
+      fill: none;
+      stroke: var(--orange);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+      animation: draw-circle 2s ease-out 0.8s forwards;
+    }
+
+    @keyframes circle-appear {
+      to { opacity: 1; }
+    }
+
+    @keyframes draw-circle {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Main lockup - vertical layout */
+    .lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    /* Logo */
+    .logo {
+      height: 140px;
+      width: auto;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fade-in 1s ease-out 2.5s forwards;
+    }
+
+    @keyframes fade-in {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Text stack */
+    .text-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Scrambling text / Brand name */
+    .brand-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--white);
+      min-width: 200px;
+      line-height: 1.2;
+    }
+
+    /* Subheader */
+    .subheader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue);
+      opacity: 0;
+      transition: opacity 0.8s ease-out;
+    }
+
+    .subheader.visible {
+      opacity: 1;
+    }
+
+    .subheader::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Scan line effect */
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+      opacity: 0.3;
+      animation: scan 4s linear infinite;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    @keyframes scan {
+      0% { top: -4px; }
+      100% { top: 100%; }
+    }
+
+    /* Corner HUD elements */
+    .hud-corner {
+      position: fixed;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--blue);
+      opacity: 0;
+      animation: fade-in 1s ease-out 6s forwards;
+    }
+
+    .hud-corner.top-left {
+      top: 20px;
+      left: 20px;
+    }
+
+    .hud-corner.top-right {
+      top: 20px;
+      right: 20px;
+      text-align: right;
+    }
+
+    .hud-corner.bottom-left {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .hud-corner.bottom-right {
+      bottom: 20px;
+      right: 20px;
+      text-align: right;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .circle-container {
+        width: 320px;
+        height: 320px;
+      }
+
+      .logo {
+        height: 100px;
+        margin-bottom: 20px;
+      }
+
+      .brand-name {
+        font-size: 24px;
+        letter-spacing: 2px;
+      }
+
+      .subheader {
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
+
+      .hud-corner {
+        font-size: 8px;
+      }
+
+      .signal-column {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .circle-container {
+        width: 280px;
+        height: 280px;
+      }
+
+      .logo {
+        height: 80px;
+      }
+
+      .brand-name {
+        font-size: 20px;
+      }
+    }
+
+    /* Noise overlay */
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="scanline"></div>
+
+  <!-- HUD corners -->
+  <div class="hud-corner top-left">
+    SIG_ANALYSIS<br>
+    FREQ: 1420.456 MHz
+  </div>
+  <div class="hud-corner top-right">
+    RA 19h 25m 31s<br>
+    DEC −21° 03′ 00″
+  </div>
+  <div class="hud-corner bottom-left">
+    BW: 10 kHz<br>
+    INT: 72 SEC
+  </div>
+  <div class="hud-corner bottom-right">
+    STATUS: LOCKED<br>
+    SNR: 30σ
+  </div>
+
+  <div class="container">
+    <!-- Background signal data -->
+    <div class="signal-bg">
+      <div class="signal-column" style="left: 5%; animation-delay: 0s;"></div>
+      <div class="signal-column" style="left: 15%; animation-delay: -5s;"></div>
+      <div class="signal-column" style="left: 25%; animation-delay: -10s;"></div>
+      <div class="signal-column" style="left: 35%; animation-delay: -15s;"></div>
+      <div class="signal-column" style="left: 45%; animation-delay: -20s;"></div>
+      <div class="signal-column" style="left: 55%; animation-delay: -25s;"></div>
+      <div class="signal-column" style="left: 65%; animation-delay: -3s;"></div>
+      <div class="signal-column" style="left: 75%; animation-delay: -8s;"></div>
+      <div class="signal-column" style="left: 85%; animation-delay: -13s;"></div>
+      <div class="signal-column" style="left: 95%; animation-delay: -18s;"></div>
+    </div>
+
+    <!-- Circle with lockup inside -->
+    <div class="circle-container">
+      <div class="wow-circle">
+        <svg viewBox="0 0 420 420">
+          <ellipse class="wow-circle-path" cx="210" cy="210" rx="190" ry="200" transform="rotate(-8 210 210)"/>
+        </svg>
+      </div>
+
+      <div class="lockup">
+        <img src="https://raw.githubusercontent.com/Annuminas777/substratic/a32bde4712500fa0df27998e9c85df1b28348d76/substratic.svg" alt="Substratic" class="logo">
+        
+        <div class="text-stack">
+          <div class="brand-name" id="brand-name"></div>
+          <div class="subheader" id="subheader">Signal Acquired — Coming June 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Generate random signal data for background columns - heavy on 1s and 2s
+    const columns = document.querySelectorAll('.signal-column');
+    
+    columns.forEach(col => {
+      let data = '';
+      for (let i = 0; i < 200; i++) {
+        const rand = Math.random();
+        if (rand > 0.97) {
+          // Rare spike - letter or high number
+          const spikeChars = 'ABCDEFGHJKLMNOPQRSTUVWXYZ6789';
+          data += spikeChars[Math.floor(Math.random() * spikeChars.length)];
+        } else if (rand > 0.7) {
+          // Occasional 3, 4, 5
+          data += Math.floor(Math.random() * 3) + 3;
+        } else {
+          // Mostly 1s and 2s
+          data += Math.floor(Math.random() * 2) + 1;
+        }
+        data += '\n';
+      }
+      col.textContent = data;
+    });
+
+    // Scrambling text animation
+    const brandName = document.getElementById('brand-name');
+    const subheader = document.getElementById('subheader');
+    const scrambleChars = 'ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789';
+    const wowSignal = '6EQUJ5';
+    const finalText = 'SUBSTRATIC';
+    
+    let phase = 0;
+    let scrambleCount = 0;
+    
+    function getRandomChar() {
+      return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+    }
+    
+    function scrambleText(length) {
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += getRandomChar();
+      }
+      return result;
+    }
+    
+    function animateText() {
+      switch(phase) {
+        case 0: // Initial scramble
+          brandName.textContent = scrambleText(6);
+          scrambleCount++;
+          if (scrambleCount > 30) {
+            phase = 1;
+            scrambleCount = 0;
+          }
+          setTimeout(animateText, 50);
+          break;
+          
+        case 1: // Resolve to 6EQUJ5 letter by letter
+          if (scrambleCount < wowSignal.length) {
+            brandName.textContent = wowSignal.substring(0, scrambleCount + 1) + scrambleText(wowSignal.length - scrambleCount - 1);
+            scrambleCount++;
+            setTimeout(animateText, 100);
+          } else {
+            brandName.textContent = wowSignal;
+            phase = 2;
+            scrambleCount = 0;
+            setTimeout(animateText, 1500); // Pause on 6EQUJ5
+          }
+          break;
+          
+        case 2: // Start scrambling out
+          phase = 3;
+          animateText();
+          break;
+          
+        case 3: // Scramble transition (grow to SUBSTRATIC length)
+          const targetLen = 6 + Math.floor((scrambleCount / 25) * 4);
+          brandName.textContent = scrambleText(Math.min(targetLen, 10));
+          scrambleCount++;
+          if (scrambleCount > 25) {
+            phase = 4;
+            scrambleCount = 0;
+          }
+          setTimeout(animateText, 50);
+          break;
+          
+        case 4: // Resolve to SUBSTRATIC letter by letter
+          if (scrambleCount < finalText.length) {
+            brandName.textContent = finalText.substring(0, scrambleCount + 1) + scrambleText(finalText.length - scrambleCount - 1);
+            scrambleCount++;
+            setTimeout(animateText, 80);
+          } else {
+            brandName.textContent = finalText;
+            // Show subheader
+            setTimeout(() => {
+              subheader.classList.add('visible');
+            }, 300);
+          }
+          break;
+      }
+    }
+    
+    // Start animation
+    setTimeout(animateText, 500);
+  </script>
+</body>
+</html>
