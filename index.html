@@ -23,8 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
   <link rel="preload" as="font" type="font/woff2" crossorigin href="https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Regular.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Italic.woff2">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     @font-face {
@@ -238,13 +237,13 @@
     html.js body:not(.done) .seq { opacity: 0; transform: translateY(10px); }
 
     .tagline {
-      font-family: 'CS Space', 'Space Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: clamp(15px, 2.4vw, 19px); letter-spacing: .02em;
       color: var(--ink);
       margin-top: clamp(10px, 2vh, 18px);
     }
     .note {
-      font-family: 'CS Space', 'Space Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-style: italic;
       font-size: clamp(13px, 2vw, 15px);
       color: rgba(33,30,28,.62);
@@ -314,8 +313,12 @@
 
     /* ---------- skip / reduced motion: jump to the finished page ---------- */
 
-    .instant * { animation: none !important; transition: none !important; }
-    html.js .instant .pen path { stroke-dashoffset: 0 !important; }
+    html.js .instant .printhead,
+    html.js .instant .mach span,
+    html.js .instant .lg { animation-duration: 0s !important; animation-delay: 0s !important; }
+    html.js .instant .col { animation: drift var(--dd, 90s) linear var(--dphase, 0s) infinite; }
+    html.js .instant .seq { transition: none !important; }
+    html.js .instant .pen path { stroke-dashoffset: 0 !important; animation: none !important; }
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
@@ -559,7 +562,7 @@
           later(function () {                                             // signal becomes brand
             w.classList.add('brand-live');
             scrambleSeq(br, BRAND, LET, 8, 40, 62, function () {
-              later(function () { body.classList.add('done'); }, 60);
+              later(function () { done = true; body.classList.add('done'); }, 60);
             });
           }, 1750);
         });
