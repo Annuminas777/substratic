@@ -234,7 +234,7 @@
     .seq {
       transition: opacity .55s ease var(--d, 0s), transform .55s ease var(--d, 0s);
     }
-    html.js body:not(.done) .seq { opacity: 0; transform: translateY(10px); }
+    html.js body:not(.done) .seq { opacity: 0; transform: translateY(10px); pointer-events: none; }
 
     .tagline {
       font-family: 'Space Mono', monospace;
@@ -303,6 +303,7 @@
     @keyframes wipeRight { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
     @keyframes drift { to { transform: translateY(-50%); } }
     @keyframes dash { to { stroke-dashoffset: 0; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: .15; } }
     @keyframes headSweep {
       0%   { top: -3px; opacity: 0; }
@@ -320,12 +321,28 @@
     html.js .instant .seq { transition: none !important; }
     html.js .instant .pen path { stroke-dashoffset: 0 !important; animation: none !important; }
 
+    /* ---------- calm mode: reduced-motion gets the story in fades, not nothing ---------- */
+
+    html.calm .status::before { animation: none; }
+    html.js.calm .printhead { animation: none; }
+    html.js.calm .mach span,
+    html.js.calm .lg { animation-name: fadeIn; }
+    html.js.calm .col { animation: fadeIn .6s ease var(--wd, 0s) both; }
+    html.js.calm .instant .col { animation: none; }
+    html.js.calm .pen path { stroke-dasharray: none; stroke-dashoffset: 0; }
+    html.js.calm .pen-circle,
+    html.js.calm .wow { opacity: 0; }
+    html.js.calm .circle-go .pen-circle,
+    html.js.calm .wow-go .wow { animation: fadeIn .55s ease both; }
+    html.js.calm #brand { visibility: visible; opacity: 0; transition: opacity .5s ease; }
+    html.js.calm .brand-live #brand { opacity: 1; }
+    html.js.calm #sig { transition: opacity .45s ease; }
+    html.js.calm .brand-live #sig { display: flex; opacity: 0; }
+    html.js.calm .seq { transform: none !important; }
+
     @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-      html.js .pen path { stroke-dashoffset: 0; }
-      html.js #brand { visibility: visible; }
-      html.js #sig { display: none; }
-      html.js body:not(.done) .seq { opacity: 1; transform: none; }
+      .printhead { display: none; }
+      html:not(.js) .status::before { animation: none; }
     }
 
     /* ---------- responsive ---------- */
@@ -541,18 +558,33 @@
         cta.addEventListener('focus', function () { cta.classList.add('inked'); });
       }
 
-      if (reduce) { finish(); return; }
-
       if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(fitAll);
       later(fitAll, 900);
 
-      body.addEventListener('click', function (e) {
-        if (!done) finish();
+      // skip on click/tap — but swallow the ghost tap that touch devices
+      // can carry into a freshly opened page
+      var t0 = Date.now();
+      body.addEventListener('click', function () {
+        if (!done && Date.now() - t0 > 700) finish();
       });
 
       var sigt = doc.getElementById('sigt');
       var br = doc.getElementById('brand');
       var w = doc.getElementById('wrap');
+
+      if (reduce) {
+        // calm sequence for reduced-motion: same story, told in fades
+        doc.documentElement.classList.add('calm');
+        sigt.textContent = SIGNAL;
+        later(function () { body.classList.add('circle-go'); }, 1400);
+        later(function () { body.classList.add('wow-go'); }, 2050);
+        later(function () {
+          w.classList.add('brand-live');
+          br.textContent = BRAND;
+        }, 2750);
+        later(function () { done = true; body.classList.add('done'); }, 3400);
+        return;
+      }
 
       later(function () {
         // machine voice finds the signal
