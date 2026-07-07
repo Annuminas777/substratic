@@ -1,509 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>document.documentElement.className='js'</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Substratic</title>
-  <meta name="description" content="Substratic - Messaging & Media">
+  <title>Substratic — Transmitting 2027</title>
+  <meta name="description" content="There's a lot of noise around doing good. Substratic listens for the signal — the people and organizations doing it with excellence — and builds the substrate it grows on. Transmitting 2027.">
+  <meta name="theme-color" content="#F7F3E8">
+
+  <!-- Social cards. TODO: once deployed, point og:url and og:image at your live domain
+       (or commit og.png to the repo and use its raw.githubusercontent.com URL). -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Substratic — The signal in the noise of doing good.">
+  <meta property="og:description" content="A media & community brand for the people and organizations doing good with excellence. Transmitting 2027.">
+  <meta property="og:url" content="https://substratic.com/">
+  <meta property="og:image" content="https://substratic.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-96%20-8%20352%20336%22%3E%3Cpath%20d%3D%22M44.0767%200H26.0438L16.1472%20121.6H34.1798L44.0767%200Z%22%20fill%3D%22%23FC7A1E%22%2F%3E%3Cpath%20d%3D%22M29.027%20121.601H21.299L20.6479%20129.601H28.3758L29.027%20121.601Z%22%20fill%3D%22%23FC7A1E%22%2F%3E%3Cpath%20d%3D%22M33.5286%20129.6H15.496L6.25049%20243.2H24.2829L33.5286%20129.6Z%22%20fill%3D%22%23FC7A1E%22%2F%3E%3Cpath%20d%3D%22M19.1308%20243.2H11.4026L10.7515%20251.2H18.4797L19.1308%20243.2Z%22%20fill%3D%22%23FC7A1E%22%2F%3E%3Cpath%20d%3D%22M23.6319%20251.199H5.59937L0%20319.999H18.0326L23.6319%20251.199Z%22%20fill%3D%22%23FC7A1E%22%2F%3E%3Cpath%20d%3D%22M82.7174%200H64.6844L58.4341%2076.7999H76.4661L82.7174%200Z%22%20fill%3D%22%23EDAB35%22%2F%3E%3Cpath%20d%3D%22M71.3143%2076.7997H63.5867L62.9355%2084.7997H70.6631L71.3143%2076.7997Z%22%20fill%3D%22%23EDAB35%22%2F%3E%3Cpath%20d%3D%22M75.8156%2084.7998H57.7827L48.5378%20198.4H66.5698L75.8156%2084.7998Z%22%20fill%3D%22%23EDAB35%22%2F%3E%3Cpath%20d%3D%22M61.4183%20198.399H53.6897L53.0386%20206.399H60.7671L61.4183%20198.399Z%22%20fill%3D%22%23EDAB35%22%2F%3E%3Cpath%20d%3D%22M65.9189%20206.4H47.8869L38.6411%20320H56.674L65.9189%20206.4Z%22%20fill%3D%22%23EDAB35%22%2F%3E%3Cpath%20d%3D%22M121.358%200H103.326L90.3044%20160H108.336L121.358%200Z%22%20fill%3D%22%2368A9B9%22%2F%3E%3Cpath%20d%3D%22M103.185%20160H95.4563L94.8052%20168H102.534L103.185%20160Z%22%20fill%3D%22%2368A9B9%22%2F%3E%3Cpath%20d%3D%22M107.685%20167.999H89.6523L80.4075%20281.599H98.4395L107.685%20167.999Z%22%20fill%3D%22%2368A9B9%22%2F%3E%3Cpath%20d%3D%22M93.2879%20281.599H85.5594L84.9082%20289.599H92.6367L93.2879%20281.599Z%22%20fill%3D%22%2368A9B9%22%2F%3E%3Cpath%20d%3D%22M97.7894%20289.6H79.7565L77.283%20320H95.315L97.7894%20289.6Z%22%20fill%3D%22%2368A9B9%22%2F%3E%3Cpath%20d%3D%22M160%200H141.967L138.842%2038.3999H156.874L160%200Z%22%20fill%3D%22%23211E1C%22%2F%3E%3Cpath%20d%3D%22M151.722%2038.3998H143.994L143.343%2046.3998H151.071L151.722%2038.3998Z%22%20fill%3D%22%23211E1C%22%2F%3E%3Cpath%20d%3D%22M156.223%2046.3995H138.191L128.945%20159.999H146.978L156.223%2046.3995Z%22%20fill%3D%22%23211E1C%22%2F%3E%3Cpath%20d%3D%22M141.826%20160H134.097L133.446%20168H141.174L141.826%20160Z%22%20fill%3D%22%23211E1C%22%2F%3E%3Cpath%20d%3D%22M146.327%20167.999H128.294L115.924%20319.999H133.956L146.327%20167.999Z%22%20fill%3D%22%23211E1C%22%2F%3E%3C%2Fsvg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Italic.woff2">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    @font-face {
+      font-family: 'CS Space';
+      src: url('https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Italic.woff2') format('woff2'),
+           url('https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Italic.woff') format('woff');
+      font-weight: normal;
+      font-style: italic;
+      font-display: swap;
     }
+    @font-face {
+      font-family: 'CS Space';
+      src: url('https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Regular.woff2') format('woff2'),
+           url('https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --orange: #FC7A1E;
+      --paper: #F7F3E8;
+      --ink: #211E1C;
+      --pen: #FC7A1E;
       --gold: #EDAB35;
-      --blue: #68A9B9;
-      --white: #F2F2F2;
-      --bg: #211E1C;
+      --teal: #68A9B9;
+      --tealink: #2F6F7E;
     }
 
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
+    html, body { height: 100%; }
 
     body {
-      background: var(--bg);
-      font-family: 'Space Mono', monospace;
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Signal data columns - scrolling background */
-    .signal-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      background: var(--paper);
+      color: var(--ink);
       overflow: hidden;
-      opacity: 0.12;
-      pointer-events: none;
+      font-family: 'Space Mono', monospace;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .signal-column {
-      position: absolute;
-      top: 0;
-      font-size: 14px;
-      line-height: 1.8;
-      letter-spacing: 2px;
-      color: var(--blue);
-      animation: scroll-up 30s linear infinite;
-      white-space: pre;
+    ::selection { background: var(--gold); color: var(--ink); }
+
+    /* ---------- the substrate: greenbar paper, grain, tractor feed ---------- */
+
+    .bands {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: repeating-linear-gradient(180deg,
+        transparent 0 44px, rgba(104,169,185,.065) 44px 88px);
     }
 
-    @keyframes scroll-up {
-      0% { transform: translateY(100vh); }
-      100% { transform: translateY(-300vh); }
+    .grain {
+      position: fixed; inset: 0; z-index: 60; pointer-events: none;
+      opacity: .05; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* Circle container */
-    .circle-container {
-      position: relative;
-      width: 420px;
-      height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
+    .sprocket {
+      position: fixed; top: 0; bottom: 0; width: 34px; z-index: 40; pointer-events: none;
+      background-image: radial-gradient(circle at 50% 50%,
+        #EAE3CF 0 3px, rgba(33,30,28,.22) 3px 3.8px, rgba(33,30,28,0) 4.8px);
+      background-size: 100% 46px;
+      background-repeat: repeat-y;
+      background-position: 50% 12px;
+    }
+    .sp-l { left: 0;  border-right: 1px dashed rgba(33,30,28,.22); }
+    .sp-r { right: 0; border-left:  1px dashed rgba(33,30,28,.22); }
+
+    /* ---------- print head (exists only while the page prints) ---------- */
+
+    .printhead {
+      position: fixed; left: 0; right: 0; top: -3px; height: 2px;
+      z-index: 45; opacity: 0; pointer-events: none;
+      background: linear-gradient(90deg, transparent,
+        rgba(33,30,28,.45) 18%, rgba(237,171,53,.9) 50%,
+        rgba(33,30,28,.45) 82%, transparent);
+      box-shadow: 0 1px 6px rgba(33,30,28,.18);
+    }
+    html.js .printhead {
+      animation: headSweep 1.15s cubic-bezier(.45,.05,.55,.95) .05s forwards;
     }
 
-    /* WOW circle */
-    .wow-circle {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      opacity: 0;
-      animation: circle-appear 1s ease-out 0.5s forwards;
+    /* ---------- machine voice: printed header + footer ---------- */
+
+    .mach {
+      position: fixed; left: 0; right: 0; z-index: 30;
+      display: flex; justify-content: space-between; gap: 16px;
+      padding: 14px 52px;
+      font-size: 11px; line-height: 1.4; letter-spacing: .18em;
+      color: var(--tealink); white-space: nowrap;
+    }
+    .m-head { top: 0; }
+    .m-foot { bottom: 0; }
+    html.js .mach span { animation: wipeRight .5s ease-out both; }
+    html.js .m-head .mh-l { animation-delay: .12s; }
+    html.js .m-head .mh-r { animation-delay: .22s; }
+    html.js .m-foot span:first-child { animation-delay: .85s; }
+    html.js .m-foot span:last-child  { animation-delay: .95s; }
+
+    /* ---------- stage ---------- */
+
+    .stage {
+      position: relative; z-index: 10; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 64px clamp(48px, 8vw, 120px);
     }
 
-    .wow-circle svg {
-      width: 100%;
-      height: 100%;
+    .cols {
+      position: absolute; inset: 0; z-index: 1;
+      overflow: hidden; pointer-events: none;
+    }
+    .col {
+      position: absolute; top: 0;
+      font-size: 13px; line-height: 1.9; letter-spacing: .12em;
+      white-space: pre; color: rgba(33,30,28,.42);
+      animation: drift var(--dd, 90s) linear var(--dphase, 0s) infinite;
+    }
+    html.js .col {
+      animation: wipeDown .7s ease-out var(--wd, 0s) both,
+                 drift var(--dd, 90s) linear var(--dphase, 0s) infinite;
     }
 
-    .wow-circle-path {
-      fill: none;
-      stroke: var(--orange);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-dasharray: 1400;
-      stroke-dashoffset: 1400;
-      animation: draw-circle 2s ease-out 0.8s forwards;
-    }
-
-    @keyframes circle-appear {
-      to { opacity: 1; }
-    }
-
-    @keyframes draw-circle {
-      to { stroke-dashoffset: 0; }
-    }
-
-    /* Main lockup - vertical layout, shifted down for visual center */
     .lockup {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: relative; z-index: 5;
+      display: flex; flex-direction: column; align-items: center;
       text-align: center;
-      z-index: 10;
-      margin-top: -60px;
     }
 
-    /* Logo - smaller */
-    .logo {
-      height: 100px;
-      width: auto;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fade-in 1s ease-out 2.5s forwards;
+    /* ---------- logo: four columns, printed in ---------- */
+
+    .logo { height: clamp(64px, 11vh, 96px); width: auto; display: block; overflow: visible; }
+    html.js .lg { animation: wipeDown .4s ease-out both; }
+    html.js .lg.c1 { animation-delay: .55s; }
+    html.js .lg.c2 { animation-delay: .68s; }
+    html.js .lg.c3 { animation-delay: .81s; }
+    html.js .lg.c4 { animation-delay: .94s; }
+
+    /* ---------- the signal ---------- */
+
+    .signal-wrap {
+      position: relative;
+      width: min(86vw, 470px);
+      aspect-ratio: 470 / 172;
+      margin-top: clamp(14px, 3vh, 26px);
     }
 
-    @keyframes fade-in {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .brand {
+      position: absolute; inset: 0; margin: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: normal;
+    }
+    #brand {
+      display: inline-block;
+      font-family: 'CS Space', 'Space Mono', monospace;
+      font-weight: normal;
+      font-size: 44px; letter-spacing: .05em;
+      color: var(--ink); white-space: nowrap;
+    }
+    #sig {
+      position: absolute; inset: 0;
+      display: none; align-items: center; justify-content: center;
+    }
+    #sigt {
+      display: inline-block;
+      font-family: 'Space Mono', monospace; font-weight: 700;
+      font-size: 52px; letter-spacing: .06em;
+      color: var(--ink); white-space: nowrap;
+    }
+    html.js #sig { display: flex; }
+    html.js #brand { visibility: hidden; }
+    html.js .brand-live #sig { display: none; }
+    html.js .brand-live #brand { visibility: visible; }
+
+    .sr {
+      position: absolute; width: 1px; height: 1px;
+      clip-path: inset(50%); overflow: hidden; white-space: nowrap;
     }
 
-    /* Text stack */
-    .text-stack {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* ---------- the pen ---------- */
+
+    .pen { filter: url(#inkf); }
+    .pen path {
+      fill: none; stroke: var(--pen);
+      stroke-width: 4; stroke-linecap: round; stroke-linejoin: round;
+    }
+    html.js .pen path { stroke-dasharray: 100; stroke-dashoffset: 100; }
+
+    .pen-circle {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      overflow: visible; pointer-events: none;
+    }
+    .pen-circle path { stroke-width: 3.4; opacity: .95; }
+    html.js .circle-go .pen-circle path {
+      animation: dash .75s cubic-bezier(.3,.65,.25,1) forwards;
     }
 
-    /* Scrambling text / Brand name */
-    .brand-name {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      color: var(--white);
-      min-width: 200px;
-      line-height: 1.2;
+    .wow {
+      position: absolute; width: clamp(84px, 23%, 112px);
+      left: -2%; top: -32%; overflow: visible; pointer-events: none;
+    }
+    html.js .wow-go .wow path { animation: dash .3s ease-out forwards; }
+    html.js .wow-go .wow path:nth-of-type(2) { animation-duration: .18s; animation-delay: .24s; }
+    html.js .wow-go .wow path:nth-of-type(3) { animation-duration: .24s; animation-delay: .36s; }
+    html.js .wow-go .wow path:nth-of-type(4) { animation-duration: .14s; animation-delay: .55s; }
+    html.js .wow-go .wow path:nth-of-type(5) { animation-duration: .10s; animation-delay: .64s; }
+
+    /* ---------- brand voice: tagline, note, status, CTA ---------- */
+
+    .seq {
+      transition: opacity .55s ease var(--d, 0s), transform .55s ease var(--d, 0s);
+    }
+    html.js body:not(.done) .seq { opacity: 0; transform: translateY(10px); }
+
+    .tagline {
+      font-family: 'CS Space', 'Space Mono', monospace;
+      font-size: clamp(15px, 2.4vw, 19px); letter-spacing: .02em;
+      color: var(--ink);
+      margin-top: clamp(10px, 2vh, 18px);
+    }
+    .note {
+      font-family: 'CS Space', 'Space Mono', monospace;
+      font-style: italic;
+      font-size: clamp(13px, 2vw, 15px);
+      color: rgba(33,30,28,.62);
+      margin-top: 8px;
+      --d: .08s;
+    }
+    .status {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 11px; letter-spacing: .22em; color: var(--tealink);
+      margin-top: clamp(18px, 3.4vh, 30px);
+      --d: .16s;
+    }
+    .status::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--pen);
+      animation: blink 1.4s steps(2) infinite;
     }
 
-    /* Subheader */
-    .subheader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 14px;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--blue);
-      opacity: 0;
-      transition: opacity 0.8s ease-out;
+    .cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: clamp(14px, 2.6vh, 22px);
+      font-size: 13px; letter-spacing: .2em;
+      color: var(--ink); text-decoration: none;
+      --d: .24s;
+    }
+    .cta:focus-visible { outline: 2px dashed var(--pen); outline-offset: 5px; border-radius: 2px; }
+    .arrow { width: 44px; height: auto; overflow: visible; transition: transform .25s ease; }
+    .arrow path { stroke-width: 3; }
+    .cta:hover .arrow { transform: translateX(3px); }
+    html.js body.done .arrow path { animation: dash .38s ease-out .55s forwards; }
+    html.js body.done .arrow path:nth-of-type(2) { animation-delay: .72s; }
+
+    .handle {
+      position: relative; padding: 6px 10px;
+      border-bottom: 1px dotted rgba(33,30,28,.45);
+      transition: border-color .25s ease;
+    }
+    .cta:hover .handle { border-bottom-color: var(--gold); }
+    .cta-circle {
+      position: absolute; left: -10px; top: -9px;
+      width: calc(100% + 20px); height: calc(100% + 17px);
+      overflow: visible; pointer-events: none;
+    }
+    .cta-circle path { stroke-width: 2.6; }
+    html.js .cta:hover .cta-circle path,
+    html.js .cta:focus-visible .cta-circle path,
+    html.js .cta.inked .cta-circle path {
+      animation: dash .45s ease-out forwards;
+    }
+    @media (hover: none) {
+      html.js body.done .cta-circle path { animation: dash .5s ease-out 1.3s forwards; }
     }
 
-    .subheader.visible {
-      opacity: 1;
+    /* ---------- keyframes ---------- */
+
+    @keyframes wipeDown  { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+    @keyframes wipeRight { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+    @keyframes drift { to { transform: translateY(-50%); } }
+    @keyframes dash { to { stroke-dashoffset: 0; } }
+    @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: .15; } }
+    @keyframes headSweep {
+      0%   { top: -3px; opacity: 0; }
+      6%   { opacity: 1; }
+      88%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
     }
 
-    .subheader::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--orange);
-      border-radius: 50%;
-      animation: blink 1s infinite;
+    /* ---------- skip / reduced motion: jump to the finished page ---------- */
+
+    .instant * { animation: none !important; transition: none !important; }
+    html.js .instant .pen path { stroke-dashoffset: 0 !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      html.js .pen path { stroke-dashoffset: 0; }
+      html.js #brand { visibility: visible; }
+      html.js #sig { display: none; }
+      html.js body:not(.done) .seq { opacity: 1; transform: none; }
     }
 
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
+    /* ---------- responsive ---------- */
 
-    /* Scan line effect */
-    .scanline {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--orange);
-  box-shadow: 0 0 10px var(--orange), 0 0 20px var(--orange), 0 0 40px var(--orange);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 5;
-  animation: scan 20s linear infinite, flicker 0.3s ease-in-out infinite;
-  }
-
-@keyframes scan {
-  0% { top: -4px; opacity: 0; }
-  5% { opacity: 0.5; }
-  45% { opacity: 0.5; }
-  50% { top: 100%; opacity: 0; }
-  100% { top: 100%; opacity: 0; }
-  }
-
-@keyframes flicker {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(0.9); }
-  }
-
-    /* Corner HUD elements */
-    .hud-corner {
-      position: fixed;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: var(--blue);
-      opacity: 0;
-      animation: fade-in 1s ease-out 6s forwards;
-    }
-
-    .hud-corner.top-left {
-      top: 20px;
-      left: 20px;
-    }
-
-    .hud-corner.top-right {
-      top: 20px;
-      right: 20px;
-      text-align: right;
-    }
-
-    .hud-corner.bottom-left {
-      bottom: 20px;
-      left: 20px;
-    }
-
-    .hud-corner.bottom-right {
-      bottom: 20px;
-      right: 20px;
-      text-align: right;
-    }
-
-    /* Mobile adjustments */
     @media (max-width: 600px) {
-      .circle-container {
-        width: 320px;
-        height: 320px;
+      .sprocket {
+        width: 16px;
+        background-image: radial-gradient(circle at 50% 50%,
+          #EAE3CF 0 2.1px, rgba(33,30,28,.22) 2.1px 2.7px, rgba(33,30,28,0) 3.4px);
+        background-size: 100% 40px;
       }
-
-      .logo {
-        height: 80px;
-        margin-bottom: 24px;
-      }
-
-      .brand-name {
-        font-size: 24px;
-        letter-spacing: 2px;
-      }
-
-      .subheader {
-        font-size: 9px;
-        letter-spacing: 2px;
-      }
-
-      .hud-corner {
-        font-size: 8px;
-      }
-
-      .signal-column {
-        font-size: 10px;
-      }
+      .mach { padding: 12px 26px; font-size: 9px; letter-spacing: .14em; }
+      .mh-r { display: none; }
+      .stage { padding: 56px 28px; }
+      .col { font-size: 11px; }
+      .col.mid { display: none; }
+      .wow { width: 78px; top: -27%; left: 0; }
+      #brand { letter-spacing: .04em; }
     }
 
-    @media (max-width: 400px) {
-      .circle-container {
-        width: 280px;
-        height: 280px;
-      }
-
-      .logo {
-        height: 70px;
-      }
-
-      .brand-name {
-        font-size: 20px;
-      }
+    @media (max-width: 380px) {
+      .sprocket { display: none; }
+      .mach { padding: 12px 16px; }
     }
 
-    /* Noise overlay */
-    .noise {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 50;
-  opacity: 0.04;
-  }
-
-.noise canvas {
-  width: 100%;
-  height: 100%;
-  }
+    @media (max-height: 640px) {
+      .logo { height: 54px; }
+      .signal-wrap { width: min(86vw, 420px); margin-top: 12px; }
+      .status { margin-top: 14px; }
+      .stage { padding-top: 52px; padding-bottom: 52px; }
+    }
   </style>
 </head>
 <body>
-  <div class="noise"><canvas id="noise"></canvas></div>
-  <div class="scanline"></div>
+  <div class="bands" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="sprocket sp-l" aria-hidden="true"></div>
+  <div class="sprocket sp-r" aria-hidden="true"></div>
+  <div class="printhead" aria-hidden="true"></div>
 
-  <!-- HUD corners -->
-  <div class="hud-corner top-left">
-    SIG_ANALYSIS<br>
-    FREQ: 1420.456 MHz
-  </div>
-  <div class="hud-corner top-right">
-    RA 19h 25m 31s<br>
-    DEC −21° 03′ 00″
-  </div>
-  <div class="hud-corner bottom-left">
-    BW: 10 kHz<br>
-    INT: 72 SEC
-  </div>
-  <div class="hud-corner bottom-right">
-    STATUS: LOCKED<br>
-    SNR: 30σ
-  </div>
+  <header class="mach m-head" aria-hidden="true">
+    <span class="mh-l">BIG EAR &middot; 15 AUG 1977 &middot; CH 02 &middot; 1420.4556 MHZ</span>
+    <span class="mh-r">RA 19H25M31S &middot; DEC -26&deg;57' &middot; 72 SEC &middot; S/N 30</span>
+  </header>
 
-  <div class="container">
-    <!-- Background signal data -->
-    <div class="signal-bg">
-      <div class="signal-column" style="left: 5%; animation-delay: 0s;"></div>
-      <div class="signal-column" style="left: 15%; animation-delay: -5s;"></div>
-      <div class="signal-column" style="left: 25%; animation-delay: -10s;"></div>
-      <div class="signal-column" style="left: 35%; animation-delay: -15s;"></div>
-      <div class="signal-column" style="left: 45%; animation-delay: -20s;"></div>
-      <div class="signal-column" style="left: 55%; animation-delay: -25s;"></div>
-      <div class="signal-column" style="left: 65%; animation-delay: -3s;"></div>
-      <div class="signal-column" style="left: 75%; animation-delay: -8s;"></div>
-      <div class="signal-column" style="left: 85%; animation-delay: -13s;"></div>
-      <div class="signal-column" style="left: 95%; animation-delay: -18s;"></div>
-    </div>
+  <main class="stage">
+    <div class="cols" aria-hidden="true"></div>
 
-    <!-- Circle with lockup inside -->
-    <div class="circle-container">
-      <div class="wow-circle">
-        <svg viewBox="0 0 420 420">
-          <ellipse class="wow-circle-path" cx="210" cy="210" rx="190" ry="200" transform="rotate(-8 210 210)"/>
+    <div class="lockup">
+      <svg class="logo" viewBox="0 0 160 320" role="img" aria-label="Substratic logomark" xmlns="http://www.w3.org/2000/svg">
+      <g class="lg c1" fill="#FC7A1E"><path d="M44.0767 0H26.0438L16.1472 121.6H34.1798L44.0767 0Z"/><path d="M29.027 121.601H21.299L20.6479 129.601H28.3758L29.027 121.601Z"/><path d="M33.5286 129.6H15.496L6.25049 243.2H24.2829L33.5286 129.6Z"/><path d="M19.1308 243.2H11.4026L10.7515 251.2H18.4797L19.1308 243.2Z"/><path d="M23.6319 251.199H5.59937L0 319.999H18.0326L23.6319 251.199Z"/></g>
+      <g class="lg c2" fill="#EDAB35"><path d="M82.7174 0H64.6844L58.4341 76.7999H76.4661L82.7174 0Z"/><path d="M71.3143 76.7997H63.5867L62.9355 84.7997H70.6631L71.3143 76.7997Z"/><path d="M75.8156 84.7998H57.7827L48.5378 198.4H66.5698L75.8156 84.7998Z"/><path d="M61.4183 198.399H53.6897L53.0386 206.399H60.7671L61.4183 198.399Z"/><path d="M65.9189 206.4H47.8869L38.6411 320H56.674L65.9189 206.4Z"/></g>
+      <g class="lg c3" fill="#68A9B9"><path d="M121.358 0H103.326L90.3044 160H108.336L121.358 0Z"/><path d="M103.185 160H95.4563L94.8052 168H102.534L103.185 160Z"/><path d="M107.685 167.999H89.6523L80.4075 281.599H98.4395L107.685 167.999Z"/><path d="M93.2879 281.599H85.5594L84.9082 289.599H92.6367L93.2879 281.599Z"/><path d="M97.7894 289.6H79.7565L77.283 320H95.315L97.7894 289.6Z"/></g>
+      <g class="lg c4" fill="#211E1C"><path d="M160 0H141.967L138.842 38.3999H156.874L160 0Z"/><path d="M151.722 38.3998H143.994L143.343 46.3998H151.071L151.722 38.3998Z"/><path d="M156.223 46.3995H138.191L128.945 159.999H146.978L156.223 46.3995Z"/><path d="M141.826 160H134.097L133.446 168H141.174L141.826 160Z"/><path d="M146.327 167.999H128.294L115.924 319.999H133.956L146.327 167.999Z"/></g>
+      </svg>
+
+      <div class="signal-wrap" id="wrap">
+        <svg class="pen pen-circle" viewBox="0 0 470 172" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path pathLength="100" d="M46.4 74.0 C53.3 70.7 71.6 60.3 87.9 54.1 C104.3 47.9 122.5 40.8 144.4 36.7 C166.3 32.6 194.3 31.3 219.3 29.6 C244.4 27.9 271.1 25.7 294.7 26.5 C318.3 27.2 342.2 30.3 360.9 34.1 C379.5 37.8 393.7 43.4 406.5 49.0 C419.2 54.5 433.8 60.6 437.5 67.3 C441.1 74.0 433.9 82.0 428.3 89.3 C422.6 96.5 417.2 104.5 403.7 110.9 C390.2 117.3 367.9 123.1 347.2 127.9 C326.6 132.7 303.4 136.8 279.7 139.8 C255.9 142.7 229.9 145.0 205.0 145.6 C180.2 146.2 151.5 146.1 130.6 143.4 C109.6 140.7 93.9 134.6 79.3 129.4 C64.7 124.2 51.6 118.7 43.2 112.3 C34.8 106.0 29.5 98.8 29.0 91.5 C28.5 84.1 30.4 75.7 40.2 68.3 C49.9 60.9 79.4 50.7 87.3 47.2"/>
         </svg>
+        <svg class="pen wow" viewBox="0 0 210 120" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(-8 90 60)">
+            <path pathLength="100" d="M12 24 Q22 58 30 82 Q38 54 46 40 Q54 62 61 84 Q70 52 78 22"/>
+            <path pathLength="100" d="M96 52 Q86 58 88 70 Q90 82 102 80 Q114 77 112 63 Q110 50 98 52"/>
+            <path pathLength="100" d="M128 50 Q133 68 139 78 Q144 62 150 56 Q155 70 161 77 Q167 58 172 48"/>
+            <path pathLength="100" d="M192 16 Q195 36 193 58"/>
+            <path pathLength="100" d="M192.5 76 Q195.5 75.5 195 79 Q194.5 82 191.5 81.5 Q189.5 80 192.5 76"/>
+          </g>
+        </svg>
+        <h1 class="brand">
+          <span class="sr">Substratic</span>
+          <span id="brand" aria-hidden="true">SUBSTRATIC</span>
+        </h1>
+        <div id="sig" aria-hidden="true"><span id="sigt"></span></div>
       </div>
 
-      <div class="lockup">
-        <img src="https://raw.githubusercontent.com/Annuminas777/substratic/a32bde4712500fa0df27998e9c85df1b28348d76/substratic.svg" alt="Substratic" class="logo">
-        
-        <div class="text-stack">
-          <div class="brand-name" id="brand-name"></div>
-          <div class="subheader" id="subheader">Signal Acquired | Coming 2028</div>
-        </div>
-      </div>
+      <p class="tagline seq">The signal in the noise of doing good.</p>
+      <p class="note seq">the substrate good grows on</p>
+      <p class="status seq">SIGNAL ACQUIRED &middot; TRANSMITTING 2027</p>
+
+      <a class="cta seq" href="https://www.instagram.com/substratic/" target="_blank" rel="noopener" aria-label="Follow the signal — Substratic on Instagram, @substratic">
+        FOLLOW THE SIGNAL
+        <svg class="pen arrow" viewBox="0 0 64 26" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path pathLength="100" d="M4 15 Q20 11 36 13 Q44 14 50 13"/>
+          <path pathLength="100" d="M42 5 Q48 10 54 13 Q47 16 41 21"/>
+        </svg>
+        <span class="handle">@SUBSTRATIC
+          <svg class="pen cta-circle" viewBox="0 0 150 46" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path pathLength="100" d="M14.7 19.7 C17.6 18.6 24.2 15.1 31.7 13.3 C39.2 11.6 49.8 9.9 59.5 9.2 C69.2 8.4 80.6 8.6 90.0 8.9 C99.4 9.3 108.3 10.1 115.8 11.3 C123.2 12.4 131.0 14.0 134.8 15.8 C138.5 17.7 138.8 20.2 138.1 22.4 C137.5 24.7 136.0 27.3 130.8 29.4 C125.6 31.5 116.1 33.5 107.1 34.9 C98.1 36.2 86.9 37.2 76.8 37.6 C66.7 38.0 55.6 37.7 46.5 37.1 C37.4 36.4 27.7 35.2 22.1 33.6 C16.5 31.9 14.7 29.5 13.2 27.3 C11.6 25.1 10.1 22.8 12.6 20.5 C15.1 18.3 25.4 15.0 28.0 13.9"/>
+          </svg>
+        </span>
+      </a>
     </div>
-  </div>
+  </main>
+
+  <footer class="mach m-foot" aria-hidden="true">
+    <span>SUBSTRATIC &middot; CONTINUOUS FORM &middot; PAGE 0001</span>
+    <span>&copy; 2026</span>
+  </footer>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="inkf" x="-8%" y="-8%" width="116%" height="116%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.5"/>
+      </filter>
+    </defs>
+  </svg>
 
   <script>
-    // Generate random signal data for background columns - heavy on 1s and 2s
-    const columns = document.querySelectorAll('.signal-column');
-    
-    columns.forEach(col => {
-      let data = '';
-      for (let i = 0; i < 200; i++) {
-        const rand = Math.random();
-        if (rand > 0.97) {
-          // Rare spike - letter or high number
-          const spikeChars = 'ABCDEFGHJKLMNOPQRSTUVWXYZ6789';
-          data += spikeChars[Math.floor(Math.random() * spikeChars.length)];
-        } else if (rand > 0.7) {
-          // Occasional 3, 4, 5
-          data += Math.floor(Math.random() * 3) + 3;
-        } else {
-          // Mostly 1s and 2s
-          data += Math.floor(Math.random() * 2) + 1;
+  (function () {
+    var doc = document, body, T = [], done = false;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var CH = 'ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789';
+    var LET = 'ABCDEFGHJKLMNOPQRSTUVWXYZ';
+    var SIGNAL = '6EQUJ5', BRAND = 'SUBSTRATIC';
+
+    function rc(s) { return s[Math.floor(Math.random() * s.length)]; }
+    function scr(s, n) { var o = ''; for (var i = 0; i < n; i++) o += rc(s); return o; }
+    function later(fn, ms) { T.push(setTimeout(fn, ms)); }
+
+    // ------- background: the data columns, printed one char per line -------
+    function buildCols() {
+      var host = doc.querySelector('.cols');
+      if (!host) return;
+      var P = [
+        { l: '7%',  o: .9,  d: 88,  m: 0 },
+        { l: '14%', o: .55, d: 104, m: 1 },
+        { l: '22%', o: .35, d: 118, m: 1 },
+        { l: '78%', o: .35, d: 112, m: 1 },
+        { l: '86%', o: .9,  d: 96,  m: 0 },
+        { l: '93%', o: .55, d: 82,  m: 1 }
+      ];
+      P.forEach(function (p, idx) {
+        var lines = [];
+        for (var i = 0; i < 150; i++) {
+          var r = Math.random();
+          if (r > .965)      lines.push(rc('ABCDEFGHJKLMNOPQRSTUVWXYZ6789'));
+          else if (r > .62)  lines.push(String(Math.floor(Math.random() * 3) + 3));
+          else if (r > .36)  lines.push(String(Math.floor(Math.random() * 2) + 1));
+          else               lines.push(' ');
         }
-        data += '\n';
-      }
-      col.textContent = data;
-    });
-
-    // Live noise
-const noiseCanvas = document.getElementById('noise');
-const ctx = noiseCanvas.getContext('2d');
-
-function resizeNoise() {
-  noiseCanvas.width = window.innerWidth / 4;
-  noiseCanvas.height = window.innerHeight / 4;
-}
-resizeNoise();
-window.addEventListener('resize', resizeNoise);
-
-function drawNoise() {
-  const imageData = ctx.createImageData(noiseCanvas.width, noiseCanvas.height);
-  const data = imageData.data;
-  for (let i = 0; i < data.length; i += 4) {
-    const v = Math.random() * 255;
-    data[i] = data[i + 1] = data[i + 2] = v;
-    data[i + 3] = 255;
-  }
-  ctx.putImageData(imageData, 0, 0);
-  requestAnimationFrame(drawNoise);
-}
-drawNoise();
-    
-    // Scrambling text animation
-    const brandName = document.getElementById('brand-name');
-    const subheader = document.getElementById('subheader');
-    const scrambleChars = 'ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789';
-    const wowSignal = '6EQUJ5';
-    const finalText = 'SUBSTRATIC';
-    
-    let phase = 0;
-    let scrambleCount = 0;
-    
-    function getRandomChar() {
-      return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+        if (idx === 4) {           // the easter egg: the real signal, vertical, in channel 2's column
+          for (var k = 0; k < 6; k++) lines[58 + k] = SIGNAL[k];
+        }
+        var t = lines.join('\n');
+        var el = doc.createElement('div');
+        el.className = 'col' + (p.m ? ' mid' : '');
+        el.textContent = t + '\n' + t;
+        el.style.left = p.l;
+        el.style.opacity = p.o;
+        el.style.setProperty('--dd', p.d + 's');
+        el.style.setProperty('--wd', (0.15 + idx * 0.12).toFixed(2) + 's');
+        el.style.setProperty('--dphase', '-' + Math.floor(Math.random() * 60) + 's');
+        host.appendChild(el);
+      });
     }
-    
-    function scrambleText(length) {
-      let result = '';
-      for (let i = 0; i < length; i++) {
-        result += getRandomChar();
-      }
-      return result;
+
+    // ------- fit the signal + brand to the circle -------
+    function fit(el, tgt, min, max) {
+      if (!el) return;
+      el.style.fontSize = '100px';
+      var w = el.scrollWidth || 1;
+      var fs = Math.max(min, Math.min(max, 100 * tgt / w));
+      el.style.fontSize = fs + 'px';
     }
-    
-    function animateText() {
-      switch(phase) {
-        case 0: // Initial scramble
-          brandName.textContent = scrambleText(6);
-          scrambleCount++;
-          if (scrambleCount > 30) {
-            phase = 1;
-            scrambleCount = 0;
-          }
-          setTimeout(animateText, 50);
-          break;
-          
-        case 1: // Resolve to 6EQUJ5 letter by letter
-          if (scrambleCount < wowSignal.length) {
-            brandName.textContent = wowSignal.substring(0, scrambleCount + 1) + scrambleText(wowSignal.length - scrambleCount - 1);
-            scrambleCount++;
-            setTimeout(animateText, 100);
-          } else {
-            brandName.textContent = wowSignal;
-            phase = 2;
-            scrambleCount = 0;
-            setTimeout(animateText, 1500); // Pause on 6EQUJ5
-          }
-          break;
-          
-        case 2: // Start scrambling out
-          phase = 3;
-          animateText();
-          break;
-          
-        case 3: // Scramble transition (grow to SUBSTRATIC length)
-          const targetLen = 6 + Math.floor((scrambleCount / 25) * 4);
-          brandName.textContent = scrambleText(Math.min(targetLen, 10));
-          scrambleCount++;
-          if (scrambleCount > 25) {
-            phase = 4;
-            scrambleCount = 0;
-          }
-          setTimeout(animateText, 50);
-          break;
-          
-        case 4: // Resolve to SUBSTRATIC letter by letter
-          if (scrambleCount < finalText.length) {
-            brandName.textContent = finalText.substring(0, scrambleCount + 1) + scrambleText(finalText.length - scrambleCount - 1);
-            scrambleCount++;
-            setTimeout(animateText, 80);
-          } else {
-            brandName.textContent = finalText;
-            // Show subheader
-            setTimeout(() => {
-              subheader.classList.add('visible');
-            }, 300);
-          }
-          break;
-      }
+    function fitAll() {
+      var wrap = doc.getElementById('wrap');
+      if (!wrap) return;
+      var t = wrap.clientWidth * 0.76;
+      fit(doc.getElementById('brand'), t, 24, 56);
+      fit(doc.getElementById('sigt'), t * 0.93, 26, 60);
     }
-    
-    // Start animation
-    setTimeout(animateText, 500);
+
+    // ------- scramble machinery -------
+    function scrambleSeq(el, final, chars, preFrames, frameMs, stepMs, cb) {
+      var f = 0, i = 0;
+      function pre() {
+        if (done) return;
+        el.textContent = scr(chars, final.length);
+        if (++f < preFrames) later(pre, frameMs);
+        else later(res, stepMs);
+      }
+      function res() {
+        if (done) return;
+        i++;
+        el.textContent = final.slice(0, i) + scr(chars, final.length - i);
+        if (i < final.length) later(res, stepMs);
+        else { el.textContent = final; if (cb) later(cb, 0); }
+      }
+      pre();
+    }
+
+    // ------- skip straight to the finished page -------
+    function finish() {
+      if (done) return;
+      done = true;
+      T.forEach(clearTimeout);
+      var br = doc.getElementById('brand');
+      if (br) br.textContent = BRAND;
+      var w = doc.getElementById('wrap');
+      if (w) w.classList.add('brand-live');
+      body.classList.add('instant', 'circle-go', 'wow-go', 'done');
+    }
+
+    function start() {
+      body = doc.body;
+      buildCols();
+
+      var cta = doc.querySelector('.cta');
+      if (cta) {
+        cta.addEventListener('mouseenter', function () { cta.classList.add('inked'); });
+        cta.addEventListener('focus', function () { cta.classList.add('inked'); });
+      }
+
+      if (reduce) { finish(); return; }
+
+      if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(fitAll);
+      later(fitAll, 900);
+
+      body.addEventListener('click', function (e) {
+        if (!done) finish();
+      });
+
+      var sigt = doc.getElementById('sigt');
+      var br = doc.getElementById('brand');
+      var w = doc.getElementById('wrap');
+
+      later(function () {
+        // machine voice finds the signal
+        scrambleSeq(sigt, SIGNAL, CH, 22, 36, 95, function () {
+          later(function () { body.classList.add('circle-go'); }, 280);   // the pen circles it
+          later(function () { body.classList.add('wow-go'); }, 1020);     // "Wow!"
+          later(function () {                                             // signal becomes brand
+            w.classList.add('brand-live');
+            scrambleSeq(br, BRAND, LET, 8, 40, 62, function () {
+              later(function () { body.classList.add('done'); }, 60);
+            });
+          }, 1750);
+        });
+      }, 1150);
+    }
+
+    if (doc.readyState !== 'loading') start();
+    else doc.addEventListener('DOMContentLoaded', start);
+  })();
   </script>
 </body>
 </html>
