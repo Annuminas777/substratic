@@ -4,13 +4,13 @@
   <script>document.documentElement.className='js'</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Substratic — Transmitting 2027</title>
-  <meta name="description" content="There's a lot of noise around doing good. Substratic listens for the signal — the people and organizations doing it with excellence — and builds the substrate it grows on. Transmitting 2027.">
+  <title>Substratic — Transmitting September 2026</title>
+  <meta name="description" content="There's a lot of noise around doing good. Substratic listens for the signal — the people and organizations doing it with excellence. Transmitting September 2026.">
   <meta name="theme-color" content="#F7F3E8">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Substratic — The signal in the noise of doing good.">
-  <meta property="og:description" content="A media & community brand for the people and organizations doing good with excellence. Transmitting 2027.">
+  <meta property="og:description" content="A media & community brand for the people and organizations doing good with excellence. Transmitting September 2026.">
   <meta property="og:url" content="https://substratic.org/">
   <meta property="og:image" content="https://substratic.org/og.png">
   <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
   <link rel="preload" as="font" type="font/woff2" crossorigin href="https://raw.githubusercontent.com/Annuminas777/substratic/d955340d59c2b2c2dbb074e4d2fcbe3428f639ad/CSSpace-Regular.woff2">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     @font-face {
@@ -242,19 +242,11 @@
       color: var(--ink);
       margin-top: clamp(10px, 2vh, 18px);
     }
-    .note {
-      font-family: 'Space Mono', monospace;
-      font-style: italic;
-      font-size: clamp(13px, 2vw, 15px);
-      color: rgba(33,30,28,.62);
-      margin-top: 8px;
-      --d: .08s;
-    }
     .status {
       display: flex; align-items: center; gap: 9px;
       font-size: 11px; letter-spacing: .22em; color: var(--tealink);
       margin-top: clamp(18px, 3.4vh, 30px);
-      --d: .16s;
+      --d: .08s;
     }
     .status::before {
       content: ''; width: 7px; height: 7px; border-radius: 50%;
@@ -267,7 +259,7 @@
       margin-top: clamp(14px, 2.6vh, 22px);
       font-size: 13px; letter-spacing: .2em;
       color: var(--ink); text-decoration: none;
-      --d: .24s;
+      --d: .16s;
     }
     .cta:focus-visible { outline: 2px dashed var(--pen); outline-offset: 5px; border-radius: 2px; }
     .arrow { width: 44px; height: auto; overflow: visible; transition: transform .25s ease; }
@@ -321,7 +313,8 @@
     html.js .instant .seq { transition: none !important; }
     html.js .instant .pen path { stroke-dashoffset: 0 !important; animation: none !important; }
 
-    /* ---------- calm mode: reduced-motion gets the story in fades, not nothing ---------- */
+    /* ---------- calm mode (reduced motion): the full story, minus true motion ----------
+       scramble + pen drawing stay; the page sweep, column drift, and slide-ups go */
 
     html.calm .status::before { animation: none; }
     html.js.calm .printhead { animation: none; }
@@ -329,15 +322,6 @@
     html.js.calm .lg { animation-name: fadeIn; }
     html.js.calm .col { animation: fadeIn .6s ease var(--wd, 0s) both; }
     html.js.calm .instant .col { animation: none; }
-    html.js.calm .pen path { stroke-dasharray: none; stroke-dashoffset: 0; }
-    html.js.calm .pen-circle,
-    html.js.calm .wow { opacity: 0; }
-    html.js.calm .circle-go .pen-circle,
-    html.js.calm .wow-go .wow { animation: fadeIn .55s ease both; }
-    html.js.calm #brand { visibility: visible; opacity: 0; transition: opacity .5s ease; }
-    html.js.calm .brand-live #brand { opacity: 1; }
-    html.js.calm #sig { transition: opacity .45s ease; }
-    html.js.calm .brand-live #sig { display: flex; opacity: 0; }
     html.js.calm .seq { transform: none !important; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -420,8 +404,7 @@
       </div>
 
       <p class="tagline seq">The signal in the noise of doing good.</p>
-      <p class="note seq">the substrate good grows on</p>
-      <p class="status seq">SIGNAL ACQUIRED &middot; TRANSMITTING 2027</p>
+      <p class="status seq">SIGNAL ACQUIRED &middot; TRANSMITTING SEP 2026</p>
 
       <a class="cta seq" href="https://www.instagram.com/substratic/" target="_blank" rel="noopener" aria-label="Follow the signal — Substratic on Instagram, @substratic">
         FOLLOW THE SIGNAL
@@ -572,19 +555,9 @@
       var br = doc.getElementById('brand');
       var w = doc.getElementById('wrap');
 
-      if (reduce) {
-        // calm sequence for reduced-motion: same story, told in fades
-        doc.documentElement.classList.add('calm');
-        sigt.textContent = SIGNAL;
-        later(function () { body.classList.add('circle-go'); }, 1400);
-        later(function () { body.classList.add('wow-go'); }, 2050);
-        later(function () {
-          w.classList.add('brand-live');
-          br.textContent = BRAND;
-        }, 2750);
-        later(function () { done = true; body.classList.add('done'); }, 3400);
-        return;
-      }
+      // reduced motion runs the full sequence too — CSS swaps the true
+      // motion (page sweep, column drift, slide-ups) for fades
+      if (reduce) doc.documentElement.classList.add('calm');
 
       later(function () {
         // machine voice finds the signal
